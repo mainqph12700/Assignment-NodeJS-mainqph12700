@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base href="http://localhost:8080"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Apples</title>
+    <style>
+        .ApplesList {
+            text-align: center;
+            margin-right: 86px;
+            overflow: auto;
+            height: 600px;
+        }
+
+        .character img {
+            border-radius: 5%;
+            width: 128px;
+            height: auto;
+        }
+
+        .character {
+            border: none;
+            padding: 10px;
+            background-color: white;
+            margin-bottom: 20px;
+            border-radius: 15px;
+        }
+
+        .appleName,
+        .applePrices,
+        .appleNote {
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .Button {
+            font-size: 18px;
+            margin-top: 15px;
+        }
+
+        .character a {
+            text-decoration: none;
+            margin: 10px;
+            padding: 5px 35px 5px 35px;
+            font-size: 14px;
+            color: rgb(148, 64, 64);
+            background-color: #256db9;
+            border-radius: 5px;
+            color: aliceblue;
+        }
+
+        .character a:hover {
+            text-decoration: none;
+            border-bottom: solid 1px gray;
+        }
+    </style>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <style>
+        a {
+            text-decoration: none;
+            color: rgb(61, 61, 61);
+        }
+
+        a:hover {
+            color: rgb(124, 124, 124);
+        }
+
+        footer {
+            text-align: center;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            padding: 20px;
+            background-color: rgb(207, 201, 199);
+            color: white;
+            font-size: 12px;
+        }
+
+        .formAdd {
+            margin-left: 10px;
+            margin-top: 25px;
+        }
+
+        .formAdd label {
+            font-size: 15px;
+            color: black;
+            margin-bottom: 30px;
+        }
+
+        .formAdd input {
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        #btnAddNewApple {
+            margin-left: 135px;
+            background-color: indianred;
+            color: aliceblue;
+            padding: 5px 35px 5px 35px;
+            font-size: 14px;
+        }
+
+        #btnAddNewApple:hover {
+            opacity: 80%;
+        }
+    </style>
+    <!--<script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            //odd: truy cập dòng lẻ, even: chẵn
+            $(".character:odd").css("background-color", "white");
+            $(".character:even").css("background-color", "white");
+            $(".character").mouseover(function () {
+                $(this).addClass("grayColor");
+            });
+            $(".character").mouseout(function () {
+                $(this).removeClass("grayColor");
+            });
+        });
+    </script>-->
+</head>
+
+<body>
+<div class="home-products" style="background-color: rgb(230, 230, 230); width: 95%; margin: 0 auto">
+    <div class="header" style="padding: 40px 0 20px 40px">
+        <div class="row" style="text-align: center">
+            <div class="col-md-4" style="font-size: x-large; font-family: Helvetica">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" name="home"
+                           href="ListApples">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" name="manager-products"
+                           href="ListApples">Quản lý sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" name="manager-user"
+                           href="ListApples">Quản lý tài khoản</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="search-box-container">
+                    <input type="text" placeholder="Tìm kiếm"/>
+                    <button class="button" name="btn-search"
+                            style="margin-left: -2%; border: none; background-color: rgb(167, 167, 167); padding:0.6% 2% 0.6% 2%; color:white;">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="email-user">
+                    <span>mainqph12700@fpt.edu.vn</span>
+                    <button name="btn-logout">
+                        <a href="Login"><i class="bi bi-box-arrow-right"
+                                                                            style="font-size: 150%; margin-left: 1%; color: black"></i></a>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="banner">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"
+             style="margin: 0 20% 0 20%;">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100"
+                         src="https://images.pexels.com/photos/5529505/pexels-photo-5529505.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+                         alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide</h5>
+                        <p>mainqph12700</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100"
+                         src="https://images.pexels.com/photos/4399942/pexels-photo-4399942.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+                         alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide</h5>
+                        <p>mainqph12700</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100"
+                         src="https://images.pexels.com/photos/6157066/pexels-photo-6157066.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+                         alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide</h5>
+                        <p>mainqph12700</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <div class="body">
+        <div class="title">
+            <hr>
+            <br>
+            <div class="row" style="text-align:center;">
+                <div class="col-md-6">
+                    <h3 style="border-right: 1px solid black"><a href="ListApples" style="font-weight: bold">Thêm Sản Phẩm Mới</a></h3>
+                </div>
+                <div class="col-md-6">
+                    <h3 style="border-right: 1px solid black"><a
+                                href="ListApples" style="font-weight: bold">Danh sách sản phẩm</a></h3>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="form-input-products" style="margin-left:9%">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="formAdd">
+                        <form action="./ListApples" method="POST" enctype="multipart/form-data">
+                            <label for="" style="margin-right: 108px">Tên: </label>
+                            <input type="text" name="txtNameApple" placeholder="..." required minlength="3"/>
+                            <br/>
+                            <label for="" style="margin-right: 108px">Ảnh: </label>
+                            <input type="file" name="AppleImage"/>
+                            <br/>
+                            <label for="" style="margin-right: 80px">Giá bán: </label>
+                            <input type="text" name="txtPricesApple" placeholder="..." required minlength="3"/>
+                            <br/>
+                            <label for="" style="margin-right: 80px">Ghi chú: </label>
+                            <textarea type="text" name="txtNoteApple" placeholder="..." rows="2" cols="40"></textarea>
+                            <br/>
+                            <input id="btnAddNewApple" type="submit" value="Add"/>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="ApplesList">
+                        <% list.forEach(function(apple){ %>
+                            <div class="character">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <img src="./Upload Images/<%- apple.ImageApple %>" alt="err"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="appleName" style="font-weight: bold; margin-left: 10px">
+                                            <%- apple.NameApple %>
+                                        </div>
+                                        <div class="appleNote"
+                                             style="margin-left: 10px; font-size: 16px; margin-top: 10px; overflow: hidden">
+                                            <p><%- apple.NotesApple %></p>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-md-3" style="text-align: left; border-left: solid 1px gray">
+                                        <div class="applePrices" style="color: green; font-weight: bold">
+                                            $ <%- apple.PricesApple %>
+                                        </div>
+                                        <div class="Button">
+                                            <a onClick="return confirm('Are you sure delete <%- apple.NameApple %> ?')"
+                                               href="./delete/<%- apple._id %>">Xóa</a>
+                                            <br>
+                                            <a href="./edit/<%- apple._id %>"
+                                               style="background-color: aliceblue; color: black">Sửa</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <footer>
+        <article class="browser">
+            <h2>Google Chrome</h2>
+            <p>Google Chrome is a web browser developed by Google, released in 2008. Chrome is the world's
+                most popular web browser today!</p>
+        </article>
+        <article class="browser">
+            <h2>Mozilla Firefox</h2>
+            <p>Mozilla Firefox is an open-source web browser developed by Mozilla. Firefox has been the
+                second most popular web browser since January, 2018.</p>
+        </article>
+        <article class="browser">
+            <h2>Microsoft Edge</h2>
+            <p>Microsoft Edge is a web browser developed by Microsoft, released in 2015. Microsoft Edge
+                replaced Internet Explorer.</p>
+        </article>
+        </article>
+        <hr>
+        <p>Author: Hege Refsnes<br>
+            <a href="mailto:hege@example.com">hege@example.com</a>
+        </p>
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

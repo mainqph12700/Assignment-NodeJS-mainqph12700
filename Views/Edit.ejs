@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <base href="http://localhost:8080"/>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Apples</title>
+    <style>
+        input {
+            margin: 10px;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        .editApple form {
+            border: solid 2px gray;
+            border-radius: 15px;
+            padding: 10px;
+        }
+
+        h1 {
+            color: red;
+        }
+
+        .editApple form input {
+            padding: 10px;
+            border-radius: 10px;
+            border: solid 1px gray;
+            font-size: 16px;
+            width: 300px;
+        }
+
+        #btnEditApple {
+            background-color: indianred;
+            color: aliceblue;
+            width: 100px;
+            border: none;
+            font-family: Arial;
+            border-radius: 5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: aliceblue;
+            border: none;
+            padding: 11px 25px 11px 25px;
+            background-color: indianred;
+            border-radius: 5px;
+            font-family: Arial;
+        }
+
+        a:hover, #btnEditApple:hover {
+            opacity: 80%;
+        }
+
+        #fileImg {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<div class="editApple">
+    <h1>Edit</h1>
+    <form action="./edit" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="ID" value="<%- appleEdit._id %>">
+        <input type="text" value="<%- appleEdit.NameApple %>" name="txtNameApple" placeholder="Tên" required
+               minlength="3"/>
+        <br/>
+        <img src="./Upload Images/<%- appleEdit.ImageApple %>" alt="error" width="400"/>
+        <br/>
+        <input id="fileImg" type="file" name="AppleImage"/>
+        <br/>
+        <input type="text" value="<%- appleEdit.PricesApple %>" name="txtPricesApple" placeholder="Giá bán" required
+               minlength="3"/>
+        <br/>
+        <br/>
+        <input type="text" value="<%- appleEdit.NotesApple %>" name="txtNoteApple" placeholder="Ghi chú"
+                  style="border-radius: 10px; border: solid 1px gray; padding: 10px; height: 50px">
+        </textarea>
+        <br/>
+        <input id="btnEditApple" type="submit" value="Edit" onClick="return confirm('Are you sure edit?')"/>
+        <a onClick="return confirm('Are you sure Cancel?')"
+           href="./ListApples">Cancel</a>
+    </form>
+</div>
+</body>
+</html>
